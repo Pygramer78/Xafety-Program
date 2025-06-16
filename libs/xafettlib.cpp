@@ -1,7 +1,7 @@
 #include "xafetylib.h"
 #include <stdio.h>
-#include <pcap.h>
-void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data) {
+void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data)
+{
     printf("Paquete capturado: %d bytes - Timestamp: %ld.%ld\n", 
            header->len, header->ts.tv_sec, header->ts.tv_usec);
 }
