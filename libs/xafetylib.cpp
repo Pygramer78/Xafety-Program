@@ -1,6 +1,6 @@
 #include "xafetylib.h"
 #include <stdio.h>
-void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_char *pkt_data)
+void packet_handler(unsigned char *param, const struct pcap_pkthdr *header, const u_char *pkt_data)
 {
     printf("Paquete capturado: %d bytes - Timestamp: %ld.%ld\n", 
            header->len, header->ts.tv_sec, header->ts.tv_usec);
@@ -9,7 +9,7 @@ void packet_handler(u_char *param, const struct pcap_pkthdr *header, const u_cha
 int sniff() {
     pcap_if_t *alldevs, *d;
     char errbuf[PCAP_ERRBUF_SIZE];
-    int i = 0, interface = 0;
+    int i = 0, iface = 0;
 
     // Obtain a list of interfaces
     if (pcap_findalldevs(&alldevs, errbuf) == -1) {
@@ -33,9 +33,9 @@ int sniff() {
 
     // Ask the user for a interface
     printf("Select an interface (number): ");
-    scanf("%d", &interface);
+    scanf("%d", &iface);
 
-    if (interface < 1 || interface > i) {
+    if (iface < 1 || iface > i) {
         printf("Invalid number.\n");
         pcap_freealldevs(alldevs);
         return 0;
@@ -43,7 +43,7 @@ int sniff() {
 
     // Look for the selected interface
     d = alldevs;
-    for (i = 1; i < interface; i++)
+    for (i = 1; i < iface; i++)
         d = d->next;
 
     // Open selected interface
