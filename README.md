@@ -6,3 +6,5 @@ This program is designed for XP computers with i386, \
 This program is used in terminal, but if you want a good and visual application, put it in *Issues*. \
 # Credits
 **Credits to:** Pygramer78, sergio-dr
+## Still Working on it
+Haven't finished yet
